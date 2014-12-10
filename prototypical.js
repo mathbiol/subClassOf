@@ -8,7 +8,7 @@ function Thing(initialStuff) {
 }
 
 Thing.prototype.get = function get(key) {
-    return this[key];
+    if (this.hasOwnProperty(key)) return this[key];
 }
 
 Thing.prototype.set = function set(key, value) {
