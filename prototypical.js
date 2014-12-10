@@ -33,5 +33,9 @@ window.prototypical = {
     demo: function () {
         var dog = { name: "Sam", breed: "Mutt", prototype: "https://48067914bb3d7935906839bc04226b8b5f55d44b-www.googledrive.com/host/0Bzu4cytkv4B8aXZ0UUpiXzkzclE/boxer.js" };
         return new Thing(dog);
+    },
+    demo2: function () {
+        var dog = { name: "Monty", prototype: "https://48067914bb3d7935906839bc04226b8b5f55d44b-www.googledrive.com/host/0Bzu4cytkv4B8aXZ0UUpiXzkzclE/corgi.js" };
+        return new Thing(dog);
     }
 }
