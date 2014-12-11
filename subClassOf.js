@@ -29,5 +29,6 @@ Object.prototype.subClassOf=function(x){
 // a={b:9}
 // a.subClassOf({c:10})
 //
-// car={color:"blue"}
-// car.subClassOf("https://0857f9879749e82d493945f8a805968a7c031889-www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/Prototypical/StefansCar.json")
+// // slide 34 of http://www.slideshare.net/stefandecker1/stefan-decker-keynote-at-cshals
+// HongGeesCar={color:"blue"}
+// HongGeesCar.subClassOf("https://0857f9879749e82d493945f8a805968a7c031889-www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/Prototypical/StefansCar.json")
