@@ -72,6 +72,7 @@ Let's go back to the special place that the execution of the callback function i
 
 Lets illustrate this experiment by going back to Stefan's car one last time. The important thing to remember is that this inheritance space is opened when the callback function has a <span style="color:red"><i><b>.noEval=true</b></i></span>.
 
+	'''javascript
 	noEvalFun = function(x){
 	    // do something to the domain variable every second, for 10 seconds
     	var i = 0
@@ -88,6 +89,7 @@ Lets illustrate this experiment by going back to Stefan's car one last time. The
     	})
 	}
 	noEvalFun.noEval=true // <-- flagging callback function for noEval
+	'''
 
 Btw, the noEvalFun is included in [subClassOf.js](https://github.com/mathbiol/subClassOf/blob/gh-pages/subClassOf.js) so there is no need to copy it to the console, it is there already. Lets give it a go:
 
