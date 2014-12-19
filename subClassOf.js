@@ -7,13 +7,27 @@ Object.prototype.subClassOf=function(x,fun){
             if(!this[k[i]]){this[k[i]]=x[k[i]]}
         }
         if(fun){fun(this)}
-        else{console.log(this,'subClassOf',x)} // this could become annoying for someone looking at the console
+        //else{console.log(this,'subClassOf',x)} // this could become annoying for someone looking at the console
     }else{ // assume x is the URL of prototype object and go get it
-        var that = this, cbFun = fun
+        var that = this;cbFun = fun
         var load = function(url){ // XMLHttpRequest
             var r = new XMLHttpRequest();
             r.onload=function(){
-                var x = eval("("+this.responseText+")")
+                if(!cbFun){cbFun=function(){}}
+                // notice check for .noEval flag in the callback function
+                if(cbFun.noEval){
+                    // if true then pack domain and range as attributes of the callback
+                    // i.e. the relationship between domain and range if completely up to the callback
+                    var x = {} // subClassOf will not migrate anything from range
+                    fun.domain=that
+                    fun.range=this
+                    cbFun=function(x){
+                        //var subClassOf_domain=fun.domain, subClassOf_range=fun.range
+                        return fun(fun)
+                    }
+                } else {
+                    var x = eval("("+this.responseText+")")
+                }
                 that.subClassOf(x,cbFun)
             }; 
             r.open("GET",url,true);
@@ -32,4 +46,24 @@ Object.prototype.subClassOf=function(x,fun){
 //
 // // slide 34 of http://www.slideshare.net/stefandecker1/stefan-decker-keynote-at-cshals
 // HongGeesCar={color:"blue"}
-// HongGeesCar.subClassOf("https://0857f9879749e82d493945f8a805968a7c031889-www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/Prototypical/StefansCar.json")
+// HongGeesCar.subClassOf("https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/Prototypical/StefansCar.json")
+
+
+// noEvalFun
+
+noEvalFun = function(x){
+    // do something to the domain variable every 2 seconds, for 10 seconds
+    var i = 0
+    var t=setInterval(function(){
+            x.domain.graffiti="noEvalFun was here at "+Date()
+            console.log(JSON.stringify(x.domain)) // display uggly domain graffiti in the console
+            i++;if(i==10){clearInterval(t)} // count up to ten graffiti writings and then stop
+        },1000)
+    
+    // make pointers to domain variable and HTTP call range in the console
+    console.log({
+        domain:x.domain,
+        range:x.range
+    })
+}
+noEvalFun.noEval=true
