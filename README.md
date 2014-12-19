@@ -100,6 +100,13 @@ And let's see what happens when noEvalFun is passed as the callback function
 
 ![noEvalDemo](https://raw.githubusercontent.com/mathbiol/SubClassOf/gh-pages/noEvalDemo.png)
 
+```javascript
+function fancyAlert(arg) {
+  if(arg) {
+    $.facebox({div:'#foo'})
+  }
+}
+```
 
 #### Population health
 ...
