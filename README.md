@@ -16,7 +16,6 @@ Let's start by putting Stefan's car somewhere, say
 
 <a href="https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json" target=_blank>https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json</a>
 
-
 As once can confirm by clicking on it, <a href="https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json" target=_blank>this URI</a> is dereferenced to
 ```javascript
 {
@@ -77,8 +76,17 @@ function ( <Domain Object> , <Range Object URL>) { . . . }
 Indeed, he is probably now driving something else than that ugly yellow car anyway!
 In any case, we need a really good reason for polluting JavaScript's Object prototype. The specific motivation for this intrusion is the handling of a myriad of Biomedical data assets flooding a great diversity of BigData resources such as those managed by [NCBI](http://www.ncbi.nlm.nih.gov/) and [EBI](https://www.ebi.ac.uk/). The challenge is particularly complicated when the assets are in [ftp sites like NCBI's](ftp://ftp.ncbi.nlm.nih.gov/) or CORS-less [web folders like TCGA's](https://tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/), but even EBI's [impressive RDF platform](https://www.ebi.ac.uk/rdf/platform) will produce URI's to data files in formats that "everyone understands" but still need to be parsed. In this context, a pervasive .subClassOf comes with the promise of handling the format identification and parsing as a reward for the low level intrusion of .subClassOf into every Object. Lets get ready to try this out with some population health and also with some genomics data to see how this could help with real world data.
 
-#### Do No Eval (which is to say <i>.noEval=true</i>)
-Let's go back to the special place that the execution of the callback function is. In order to allow this experiment, the .subClassOf method will NOT evaluate the prototypal inheritance and instead it will allow for a callback fundtion with the subject of object as the .domain of the input variable and the HTTP call to the remote prototype as the range. Taking lots of liberties mixing rdf syntax with JavaScript functional style, this could be thought as
+### subClassOf has two dozen lines of code already: this is a good point to stop :-)
+
+The subClassOf.js library was developed to enable the sort of horizontal inheritance proposed by Stefan Decker. Therefore, uses of that capability are best left out of the core library. Accordingly, the examples discussed in the next sections will use functions stored in the [subClassOfDemo.js](https://github.com/mathbiol/subClassOf/blob/gh-pages/subClassOfDemo.js). If you have your browser pointed to then you already have it loaded. Otherwise add this additional source to your HTML:
+
+```html
+<script src="https://mathbiol.github.io/subClassOf/subClassOfDemo.js"></script>
+```
+
+
+### Do No Eval (which is to say <i>.noEval=true</i>)
+Let's go back to the special place that the execution of the callback function is. In order to allow this experiment, the .subClassOf method will NOT evaluate the prototypal inheritance and instead it will allow for a callback function with the subject of object as the .domain of the input variable and the HTTP call to the remote prototype as the range. Taking lots of liberties mixing rdf syntax with JavaScript functional style, this could be thought as
 
 ```javascript
 callback=function(x){
@@ -106,17 +114,36 @@ noEvalFun = function(x){
 noEvalFun.noEval=true // <-- flagging callback function for noEval
 ```
 
-Btw, the noEvalFun is included in [subClassOf.js](https://github.com/mathbiol/subClassOf/blob/gh-pages/subClassOf.js) so there is no need to copy it to the console, it is there already. Lets give it a go:
+Btw, the noEvalFun is included in [subClassOfDemo.js](https://github.com/mathbiol/subClassOf/blob/gh-pages/subClassOfDemo.js) so there is no need to copy it to the console, it is there already. Lets give it a go:
 
-recall Hong Gee's car simply as something blue,
+Let's start by recall Hong Gee's car simply as something blue,
 
 ```javascript
 HongGeesCar={color:"blue"}
 ```
 
-And let's see what happens when noEvalFun is passed as the callback function
+And then let's see what happens when noEvalFun is passed as the callback function
 
 ![noEvalDemo](https://raw.githubusercontent.com/mathbiol/SubClassOf/gh-pages/noEvalDemo.png)
+
+As illustrated by this example, the single input argument of the call back function:
+
+1. Has to have a .noEval=true to trigger the advanced behaviour.
+2. Is automatically added a .domain attribute with a pointer to its subject, in this case Hong Gee's car.
+3. Is automatically added a .range attribute with a pointer to the remote object, in this case a HTTP call to the JSON object describing Stefan's car.
+4. This is the most important: the callback function beneficts from the wonders of [lexical scoping](http://en.wikipedia.org/wiki/Scope_%28computer_science%29#Lexical_scoping) (javascript is a functional language). As illustrated by the graffitti attribute, these are lasting pointers, which can be used indefenitely by the callback function.
+
+
+### Self-updated inheritance
+
+
+### Diving a little deeper
+
+
+
+
+#### QMachine
+
 
 
 #### Population health
