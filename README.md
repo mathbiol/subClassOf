@@ -1,6 +1,6 @@
 subClassOf
 ============
-#Live at [mathbiol.github.io/subClassOf](https://mathbiol.github.io/subClassOf). 
+##Live at [mathbiol.github.io/subClassOf](https://mathbiol.github.io/subClassOf). 
 To add it to your app all you need is 
 
 ```html
