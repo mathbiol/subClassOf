@@ -187,7 +187,7 @@ The dynamic nature of this example lends itself better to a screencast rather th
 
 ```javascript
 HongGeesCar={color:"blue"}
-HongGeesCar.subClassOf('https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json',selfUpdatedInheritance)
+HongGeesCar.subClassOf(stefansCar,selfUpdatedInheritance)
 ```
 and this is what happened:
 

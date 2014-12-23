@@ -1,5 +1,8 @@
 console.log('Demos loaded from subClassOfDemo.js')
 
+HongGeesCar={color:"blue"}
+stefansCar = "https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json"
+
 // noEvalFun:
 // showing how lexical scoping allows you to repeatedly write graffiti onto the domain object
 
