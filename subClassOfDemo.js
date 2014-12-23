@@ -19,11 +19,13 @@ noEvalFun = function(x){
     })
 }
 noEvalFun.noEval=true
+// HongGeesCar={color:"blue"}
+// HongGeesCar.subClassOf('StefansCar.json',noEvalFun)
+
+
 
 // selfUpdatedInheritance:
 // keeping inherited attribute values updated
-// HongGeesCar={color:"blue"}
-
 
 selfUpdatedInheritance=function(x){
     // find out what is new in the remote object

@@ -5,7 +5,7 @@ Live at [mathbiol.github.io/subClassOf](https://mathbiol.github.io/subClassOf). 
 <script src="https://mathbiol.github.io/subClassOf/subClassOf.js"></script>
 ```
 ### Synopsis 
-This is an attempt to come up with an implementation of [Stefan Decker](http://www.stefandecker.org/)'s ideas for prototypal inheritance at web scale. The key document is [Stefan's presentation](http://www.slideshare.net/stefandecker1/stefan-decker-keynote-at-cshals) at [CSHALS 2013](http://www.iscb.org/cshals2013). Slide #34 will be used as an illustration for the proposed implementation. The approach explored here pollutes the Object prototype (you were warned :-) ) with a subClassOf method to estabish the proposed "horizontal dependency". This approach is inspired by type migration as in Semantic Web's [rdfs:subClassOf](http://www.w3.org/TR/rdf-schema/#ch_subclassof).
+This is an attempt to come up with an implementation for [Stefan Decker](http://www.stefandecker.org/)'s ideas of prototypal inheritance at web scale. The key document is [Stefan's presentation](http://www.slideshare.net/stefandecker1/stefan-decker-keynote-at-cshals) at [CSHALS 2013](http://www.iscb.org/cshals2013). Slide #34 will be repeatedly used as an illustration for the proposed implementation. The approach explored here pollutes the Object prototype (you were warned :-) ) with a subClassOf method to establish the proposed "horizontal dependency". This approach is inspired by type migration as in Semantic Web's [rdfs:subClassOf](http://www.w3.org/TR/rdf-schema/#ch_subclassof).
 
 [![slide 34](https://raw.githubusercontent.com/mathbiol/SubClassOf/gh-pages/stefan-decker-keynote-at-cshals-34-638.png)](http://www.slideshare.net/stefandecker1/stefan-decker-keynote-at-cshals)
  
@@ -191,18 +191,54 @@ and this is what happened:
 
 <a href="https://www.youtube.com/watch?v=J7MFvnHKaB8" target="_blank"><img src="selfUpdatedInheritance.png" /></a>
 
-### Semantic Web
+### Semantic Web - a global computational space?
+
+At this point one might be excused to think that the reference to [rdfs:suBClassOf](http://www.w3.org/TR/rdf-schema/#ch_subclassof) is not only excessive but altogether abusive since there aren't any triples to justify a role for the [Resource Description Framework](http://www.w3.org/RDF/). The response to this anticipated criticism is a bit experimental, and relies on recent work in pervasive web computing solutions such as [QMachine](qmachine.org), [[PMID:24913605](http://www.ncbi.nlm.nih.gov/pubmed/24913605)]. The experimental bit can be found in the way the callback function packages <i>.domain</i> and <i>.range</i> when the <i>.noEval</i> flag is used. For example, if one halts execution of noEvalFun above, the value of the input argument <i>x</i> will be found to be that of the noEvalFun function itself,
+
+```javascript
+> x
+subClassOfDemo.js:6 function (x){
+    // do something to the domain variable every 2 seconds, for 10 seconds
+    var i = 0
+    var t=setInterval(function(){
+            x.domain.graffiti="noEvalFun was here at "+Date()
+            console.log(JSON.stringify(x.domain)) // display uggly domain graffiti in the console
+            i++;if(i==10){clearInterval(t)} // count up to ten graffiti writings and then stop
+        },1000)
+    
+    // make pointers to domain variable and HTTP call range in the console
+    console.log({
+        domain:x.domain,
+        range:x.range
+    })
+}
+
+> x.domain
+Object {color: "blue", subClassOf: function}color: "blue"
+
+> x.range
+XMLHttpRequest {statusText: "OK", status: 200, responseURL: "http://localhost:8000/subClassOf/StefansCar.json", response: "{↵	maker:"Volkswagen",↵	color:"yellow",↵	model:"Passat",↵	ocm:2000↵}", responseType: ""…}
+
+```
+
+In the examples described here, the fact that the callback input argument packages the [rdf:predicate](http://www.w3.org/TR/rdf-schema/#ch_predicate) function itself, in addition to its [rdfs:domain](http://www.w3.org/TR/rdf-schema/#ch_domain) and [rdfs:range](http://www.w3.org/TR/rdf-schema/#ch_range), is of no practical relevance. It is speculated however, that the dyadic predicate nature of this argument is conducive to web-scale code distribution and asynchronous execution along the lines explored by [Sean Wilkinson's Q](https://github.com/qmachine/quanah), which underlies [QMachine](qmachine.org). Specifically, the callback input argument contains the executable triple <i>domain <- function - range</i>, that is, a portable <i>function(domain,range){...}</i>. Could this use of <i>.subClassOf</i> be the foundation for "<i>linked code</i>" as a global compute space along the same lines that RDF did for [linked data as a global data space](http://linkeddata.org)?
 
 
+### Miscellaneous notes
 
+1. If the range is an object in the local instead of a URL, <i>.subClassOf</i> will work as one might expect - it will pull the new attribute values.
 
-#### QMachine
+<hr>
+## Domain applications
 
+Examples of applications to different domains
 
+### Population health
 
-#### Population health
+	{zip:11790,year:2013}.subClassOf(<openHealth SODAservice>)
+
 ...
 
-#### Genomics example
+### Genomics example
 
 ...
