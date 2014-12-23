@@ -1,7 +1,7 @@
 console.log('subClassOf.js added .subClassOf to Object')
 
 Object.prototype.subClassOf=function(x,fun){
-    if(typeof(x)=='object'){ // prototype is an object in the local scope
+    if(typeof(x)=='object'){ // defalt inheritance using the prototype as the object in the local scope
         var k = Object.getOwnPropertyNames(x)
         for(i=0;i<k.length;i++){
             if(!this[k[i]]){this[k[i]]=x[k[i]]}
