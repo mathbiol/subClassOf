@@ -189,9 +189,9 @@ HongGeesCar.subClassOf('https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcE
 ```
 and this is what happened:
 
-< youtube >
+<object width="425" height="344"><param name="movie" value="https://www.youtube.com/v/J7MFvnHKaB8&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><embed src="https://www.youtube.com/v/J7MFvnHKaB8&hl=en&fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed></object>
 
-### Diving deeper
+### Semantic Web
 
 
 
