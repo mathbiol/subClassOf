@@ -1,6 +1,8 @@
 subClassOf
 ============
-Live at [mathbiol.github.io/subClassOf](https://mathbiol.github.io/subClassOf). To add it to your app all you need is 
+#Live at [mathbiol.github.io/subClassOf](https://mathbiol.github.io/subClassOf). 
+To add it to your app all you need is 
+
 ```html
 <script src="https://mathbiol.github.io/subClassOf/subClassOf.js"></script>
 ```
@@ -11,12 +13,12 @@ This is an attempt to come up with an implementation for [Stefan Decker](http://
  
 ### Stefan's car
 
-Let's start by putting Stefan's car somewhere, say
+Let's start by putting Stefan's car somewhere, say in my Google Drive at
 
 
 <a href="https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json" target=_blank>https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json</a>
 
-As once can confirm by clicking on it, <a href="https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json" target=_blank>this URI</a> is dereferenced to
+As one can confirm by clicking on it, <a href="https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json" target=_blank>this URI</a> is dereferenced to
 ```javascript
 {
   maker:"Volkswagen",
@@ -25,7 +27,7 @@ As once can confirm by clicking on it, <a href="https://www.googledrive.com/host
   ocm:2000
 }
 ```
-Therefore through define stefansCar by 
+Therefore, let's define stefansCar by reference
 
 ```javascript
 stefansCar = "https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json"
@@ -38,7 +40,7 @@ hongGeesCar = {color:"blue"}
 hongGeesCar.subClassOf(stefansCar)
 ```
 
-This takes a second or two to dereference the remote prototype and import the new attributes, reporting that HongGee's car is
+This will take a second or two to dereference the remote prototype and import the new attributes, reporting that HongGee's car is
  
 ```javascript
 {
