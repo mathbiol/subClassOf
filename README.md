@@ -189,8 +189,7 @@ HongGeesCar.subClassOf('https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcE
 ```
 and this is what happened:
 
-<a href="https://www.youtube.com/watch?v=J7MFvnHKaB8" target="_blank"><img src="selfUpdatedInheritance.png" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+<a href="https://www.youtube.com/watch?v=J7MFvnHKaB8" target="_blank"><img src="selfUpdatedInheritance.png" /></a>
 
 ### Semantic Web
 
