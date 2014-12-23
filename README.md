@@ -181,7 +181,13 @@ selfUpdatedInheritance=function(x){
 selfUpdatedInheritance.noEval=true
 ```
 
-The dynamic nature of this example lends itself better to a screencast rather than a snapshot:
+The dynamic nature of this example lends itself better to a screencast rather than a snapshot. First the two steps, defining a local object, again Hong Gees's car as something blue and then we'll change values inherited horizontally from the remote Stefan's car:
+
+```javascript
+HongGeesCar={color:"blue"}
+HongGeesCar.subClassOf('https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json',selfUpdatedInheritance)
+```
+and this is what happened:
 
 < youtube >
 
