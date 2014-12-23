@@ -196,7 +196,7 @@ and this is what happened:
 
 ### Semantic Web - a global computational space?
 
-At this point one might be excused to think that the reference to [rdfs:suBClassOf](http://www.w3.org/TR/rdf-schema/#ch_subclassof) is not only excessive but altogether abusive since there aren't any triples to justify a role for the [Resource Description Framework](http://www.w3.org/RDF/). The response to this anticipated criticism is a bit experimental, and relies on recent work in pervasive web computing solutions such as [QMachine](qmachine.org), [[PMID:24913605](http://www.ncbi.nlm.nih.gov/pubmed/24913605)]. The experimental bit can be found in the way the callback function packages <i>.domain</i> and <i>.range</i> when the <i>.noEval</i> flag is used. For example, if one halts execution of noEvalFun above, the value of the input argument <i>x</i> will be found to be that of the noEvalFun function itself,
+At this point one might be excused to think that the reference to [rdfs:suBClassOf](http://www.w3.org/TR/rdf-schema/#ch_subclassof) is not only excessive but altogether abusive since there aren't any triples here to justify a role for the [Resource Description Framework](http://www.w3.org/RDF/). The response to this anticipated criticism is a bit experimental, and relies on recent work in pervasive web computing solutions such as [QMachine](qmachine.org), [[PMID:24913605](http://www.ncbi.nlm.nih.gov/pubmed/24913605)]. The experimental bit can be found in the way the callback function packages <i>.domain</i> and <i>.range</i> when the <i>.noEval</i> flag is used. For example, if one halts execution of noEvalFun above, the value of the input argument <i>x</i> will be found to be that of the noEvalFun function itself,
 
 ```javascript
 > x
