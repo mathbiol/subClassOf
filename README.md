@@ -7,14 +7,15 @@ To add it to your app all you need is
 <script src="https://mathbiol.github.io/subClassOf/subClassOf.js"></script>
 ```
 ### Synopsis 
-This is an attempt to come up with an implementation for [Stefan Decker](http://www.stefandecker.org/)'s ideas of prototypal inheritance at web scale. The key document is [Stefan's presentation](http://www.slideshare.net/stefandecker1/stefan-decker-keynote-at-cshals) at [CSHALS 2013](http://www.iscb.org/cshals2013). Slide #34 will be repeatedly used as an illustration for the proposed implementation. The approach explored here pollutes the Object prototype (you were warned :-) ) with a subClassOf method to establish the proposed "horizontal dependency". This approach is inspired by type migration as in Semantic Web's [rdfs:subClassOf](http://www.w3.org/TR/rdf-schema/#ch_subclassof).
+This is an attempt to come up with an implementation for [Stefan Decker](http://www.stefandecker.org/)'s ideas of prototypal inheritance at web scale. The key document is [Stefan's presentation](http://www.slideshare.net/stefandecker1/stefan-decker-keynote-at-cshals) at [CSHALS 2013](http://www.iscb.org/cshals2013). Slide #34 in particular will be repeatedly used here as an illustration for the proposed implementation. Note that The approach explored here pollutes the Object prototype (you were warned :-) ) with a subClassOf method to establish the proposed "<i>horizontal dependency</i>". This approach is inspired by type migration as in Semantic Web's [rdfs:subClassOf](http://www.w3.org/TR/rdf-schema/#ch_subclassof).
+
 
 [![slide 34](https://raw.githubusercontent.com/mathbiol/SubClassOf/gh-pages/stefan-decker-keynote-at-cshals-34-638.png)](http://www.slideshare.net/stefandecker1/stefan-decker-keynote-at-cshals)
+<b>Figure: Slide #34 of [presentation by Stefan Decker](http://www.slideshare.net/stefandecker1/stefan-decker-keynote-at-cshals) at [CSHALS 2013](http://www.iscb.org/cshals2013)</b>
  
 ### Stefan's car
 
-Let's start by putting Stefan's car somewhere, say in my Google Drive at
-
+Let's start by putting Stefan's car somewhere, say in public folder of my Google Drive at
 
 <a href="https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json" target=_blank>https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json</a>
 
@@ -27,20 +28,20 @@ As one can confirm by clicking on it, <a href="https://www.googledrive.com/host/
   ocm:2000
 }
 ```
-Therefore, let's define stefansCar by reference
+Therefore, we can define <i>stefansCar</i> by reference, as is customary in using [the Web as a global data space](http://linkeddatabook.com/):
 
 ```javascript
 stefansCar = "https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json"
 ```
 
-So we should now be able to define hongGeesCar, which we hear is blue, by having all other types migrate from Stefan's car:
+So we should now be able to define <i>hongGeesCar</i>, which we hear is blue, by having all other types migrate from Stefan's car:
 
 ```javascript
 hongGeesCar = {color:"blue"}  
 hongGeesCar.subClassOf(stefansCar)
 ```
 
-This will take a second or two to dereference the remote prototype and import the new attributes, reporting that HongGee's car is
+This will take a second or two to dereference the remote prototype and import the new attributes, reporting that HongGee's car, while remaining blue, is also:
  
 ```javascript
 {
@@ -50,6 +51,8 @@ This will take a second or two to dereference the remote prototype and import th
   ocm:2000
 }
 ```
+
+Thanks to [JavaScript's functional support for lexical scoping](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures), this first approach is farily straightforward as the [inspection of the code](https://github.com/mathbiol/subClassOf/blob/gh-pages/subClassOf.js) will reveal. This initial, one off, support for prototypal inheritance will now be expanded to explore the [local scope](http://en.wikipedia.org/wiki/Scope_%28computer_science%29#Lexical_scoping) of the inheritance.
 
 ### Callback
 As it always happens with [web computing](https://en.wikipedia.org/wiki/Web_computing), the dereferencing of the remote prototype, Stefan's car, introduces an asynchrony which we could, for example, address with a callback function. Accordingly, .subClassOf will accept a callback function as a second input argument. For example, you could get the stringified original and type inherited result result shown in the console by
