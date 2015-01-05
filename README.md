@@ -52,10 +52,10 @@ This will take a second or two to dereference the remote prototype and import th
 }
 ```
 
-Thanks to [JavaScript's functional support for lexical scoping](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures), this first approach is farily straightforward as the [inspection of the code](https://github.com/mathbiol/subClassOf/blob/gh-pages/subClassOf.js) will reveal. This initial, one off, support for prototypal inheritance will now be expanded to explore the [local scope](http://en.wikipedia.org/wiki/Scope_%28computer_science%29#Lexical_scoping) of the inheritance.
+Thanks to [JavaScript's functional support for lexical scoping](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures), this first approach is farily straightforward as the [inspection of the code](https://github.com/mathbiol/subClassOf/blob/gh-pages/subClassOf.js) will reveal. This initial, one off, support for prototypal inheritance will now be expanded to explore the [local scope](http://en.wikipedia.org/wiki/Scope_%28computer_science%29#Lexical_scoping) of the horizontal inheritance.
 
 ### Callback
-As it always happens with [web computing](https://en.wikipedia.org/wiki/Web_computing), the dereferencing of the remote prototype, Stefan's car, introduces an asynchrony which we could, for example, address with a callback function. Accordingly, .subClassOf will accept a callback function as a second input argument. For example, you could get the stringified original and type inherited result result shown in the console by
+As it typical of [web computing](https://en.wikipedia.org/wiki/Web_computing) reliance on remote calling, the dereferencing of the remote prototype, Stefan's car, introduces an asynchrony which we could, for example, address with the customary callback function. Accordingly, .subClassOf will accept a callback function as a second input argument. For example, you could get the stringified original and type inherited result result shown in the console by
 
 ```javascript
 hongGeesCar.subClassOf(
@@ -241,10 +241,21 @@ Examples of applications to different domains
 
 ### Population health
 
-	{zip:11790,year:2013}.subClassOf(<openHealth SODAservice>)
+	someDiseaseStats = {zip:11790,year:2013}.subClassOf(<openHealth SODAservice>)
+	
+as a more (semantically) interoperable version fo apps such as <a href="http://mathbiol.github.io/openHealth/index.html?jobs/pqiSuffolk.js" target=_blank>http://mathbiol.github.io/openHealth/index.html?jobs/pqiSuffolk.js</a>
 
-...
+... work in progress ...
 
 ### Genomics example
 
-...
+		somePatientCases = {path:"genes/ENSG00000141510",filters:{
+			"mutation":{"functionalImpact":{is:["High"]}},
+			"donor":{"projectId":{is:["MALY-DE"]}},
+			"tumourStageAtDiagnosis":{"is":["III"]}}
+		}.subclassOf("https://dcc.icgc.org:443/api/v1")
+
+as a more (semantically) interoperable version for libraries such as <a href="https://github.com/ibl/icgc" target=_blank>https://github.com/ibl/icgc</a>.
+
+
+... work in progress ...
