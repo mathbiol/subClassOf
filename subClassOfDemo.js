@@ -1,9 +1,18 @@
 console.log('Demos loaded from subClassOfDemo.js')
 
+// Index of sections
+// 1. Stefan's car
+// 2. noEvalFun
+// 3. selfUpdated Inheritance
+// 4. 
+
+
+// 1. Stefan's car
+
 HongGeesCar={color:"blue"}
 stefansCar = "https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json"
 
-// noEvalFun:
+// 2. noEvalFun
 // showing how lexical scoping allows you to repeatedly write graffiti onto the domain object
 
 noEvalFun = function(x){
@@ -27,7 +36,7 @@ noEvalFun.noEval=true
 
 
 
-// selfUpdatedInheritance:
+// 3. selfUpdatedInheritance
 // keeping inherited attribute values updated
 
 selfUpdatedInheritance=function(x){
@@ -63,3 +72,7 @@ selfUpdatedInheritance=function(x){
 selfUpdatedInheritance.noEval=true
 //HongGeesCar={color:"blue"}
 //HongGeesCar.subClassOf('https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json',selfUpdatedInheritance)
+
+// 4. Inheriting from data services
+// illustrated using SODA services for SOCRATA rep of population health data in teh state of New York
+
