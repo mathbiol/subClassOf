@@ -15,11 +15,11 @@ This is an attempt to come up with an implementation for [Stefan Decker](http://
  
 ### Stefan's car
 
-Let's start by putting Stefan's car somewhere, say in public folder of my Google Drive at
+Let's start by putting Stefan's car somewhere, say in the gh-page publicly served folder of this repository
 
-<a href="https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json" target=_blank>https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json</a>
+<a href="https://mathbiol.github.io/subClassOf/StefansCar.json" target=_blank>https://mathbiol.github.io/subClassOf/StefansCar.json</a>
 
-As one can confirm by clicking on it, <a href="https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json" target=_blank>this URI</a> is dereferenced to
+As one can confirm by clicking on it, <a href="https://mathbiol.github.io/subClassOf/StefansCar.json" target=_blank>this URI</a> is dereferenced to
 ```javascript
 {
   maker:"Volkswagen",
@@ -31,7 +31,7 @@ As one can confirm by clicking on it, <a href="https://www.googledrive.com/host/
 Therefore, we can define <i>stefansCar</i> by reference, as is customary in using [the Web as a global data space](http://linkeddatabook.com/):
 
 ```javascript
-stefansCar = "https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json"
+stefansCar = "https://mathbiol.github.io/subClassOf/StefansCar.json"
 ```
 
 So we should now be able to define <i>hongGeesCar</i>, which we hear is blue, by having all other types migrate from Stefan's car:
@@ -190,7 +190,7 @@ The asynchronous nature of this example lends itself better to a screencast rath
 
 ```javascript
 HongGeesCar={color:"blue"}
-stefansCar="https://www.googledrive.com/host/0BwwZEXS3GesiTjlHSmlOcEJaeDA/subClassOf/StefansCar.json"
+stefansCar="https://mathbiol.github.io/subClassOf/StefansCar.json"
 HongGeesCar.subClassOf(stefansCar,selfUpdatedInheritance)
 ```
 and this is what happened:
